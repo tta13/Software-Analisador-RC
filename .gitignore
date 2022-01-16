@@ -3,3 +3,6 @@ dist/
 __pycache__/
 loganalyzer.egg-info/
 setup.py
+*.rcg
+*.rcl
+*.csv
