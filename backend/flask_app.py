@@ -1,23 +1,27 @@
 import glob, os
+from posixpath import curdir
 from flask import Flask, request, redirect, json
 
-script_directory = os.path.dirname(__file__)
-
+script_directory = os.getcwd()
+data_dir = os.path.join(script_directory, 'data')
 
 app = Flask(__name__)
-app.config["UPLOADS"] = '/data'
+app.config["UPLOADS"] = data_dir
 
 @app.route('/matches', methods = ['GET'])
 def get_matches():
     result = []
-    os.chdir(script_directory + '/data/')
+    if(os.getcwd() != data_dir):
+        os.chdir(data_dir)
     for file in glob.glob("*.json"):
         result.append(file.split('.')[0])
-    return { 'matches': result }
+    response = json.jsonify({ 'matches': result })
+    response.headers.add('Access-Control-Allow-Origin', '*')
+    return response
 
 @app.route('/matches/<match_id>/', methods = ['GET'])
 def get_matches_analysis(match_id: str):    
-    with open(script_directory + '/data/' + match_id + '.log.json') as file:
+    with open(os.path.join(data_dir, match_id + '.log.json')) as file:
         content = file.read()
         return content
 
@@ -47,9 +51,9 @@ def receive_upload():
             rcg = request.files['rcg']
             rcl = request.files['rcl']
             if compare_extension(rcg.filename, 'RCG') and compare_extension(rcl.filename, 'RCL'):
-                rcg.save(script_directory + os.path.join(app.config['UPLOADS'], rcg.filename))
+                rcg.save(os.path.join(app.config['UPLOADS'], rcg.filename))
                 
-                rcl.save(script_directory + os.path.join(app.config['UPLOADS'], rcl.filename))
+                rcl.save(os.path.join(app.config['UPLOADS'], rcl.filename))
         
             else:
                 error = rcg.filename + ', ' + rcl.filename + ': file extension or name not allowed'
