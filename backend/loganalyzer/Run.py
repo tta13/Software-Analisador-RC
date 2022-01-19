@@ -2,23 +2,24 @@ import sys
 import os
 import argparse
 import json
-from .Game import *
-from .Parser import *
-from .Analyzer import *
+from Game import *
+from Parser import *
+from Analyzer import *
 
 
 def parse_args():
     parser = argparse.ArgumentParser()
-    parser.add_argument("--path", help="Input file path", metavar='<log file without .rcl or .rcg >',
-                        required=True, dest='path')
+    parser.add_argument("--rcg", help="RCG file path", metavar='<RCG log file>',
+                        required=True, dest='rcg')
+    parser.add_argument("--rcl", help="RCL file path", metavar='<RCL log file>',
+                        required=True, dest='rcl')
     parser.add_argument(
-        "--save_path", help="Output saving path.", metavar='<save_path>', dest='save_path')
-    parser.add_argument("--heatmap", help="Show Heatmap of Selected Side", metavar='TEAM_SIDE',
-                        dest='heat_map')
+        "--output", help="Output saving path.", metavar='<Output file path>', dest='output')
     parser.add_argument('--version', action='version', version='1.0.1')
     args = parser.parse_args()
-    if args.save_path is None:
-        args.save_path = args.path+".log.json"
+    if args.output is None:
+        args.output = args.rcg.split('.rcg')[0] + ".log.json"
+        print(args.output)
     return args
 
 
@@ -76,17 +77,15 @@ def write_to_file(save_path, analyzer):
 
 def main():
     args = parse_args()
-    path = args.path
-    save_path = args.save_path
-    parser = Parser(path)
+    rcg_path = args.rcg
+    rcl_path = args.rcl
+    save_path = args.output
+    parser = Parser(rcg_path, rcl_path)
     game = Game(parser)
     analyzer = Analyzer(game)
     analyzer.analyze()
     write_to_file(save_path, analyzer)
 
-    # Drawing Heatmap of the game
 
-    if args.heat_map is not None:
-        analyzer.draw_heatmap(right_team=True, left_team=True)
-
-main()
+if __name__ == '__main__':
+    main()

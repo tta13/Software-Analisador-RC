@@ -1,7 +1,8 @@
 
 class Parser:
-    def __init__(self, path):
-        self.path = path
+    def __init__(self, rcg_path, rcl_path):
+        self.rcg_path = rcg_path
+        self.rcl_path = rcl_path
         self.set_data_rcg()
         self.set_data_rcl()
         self.right_team
@@ -9,7 +10,7 @@ class Parser:
 
     def set_data_rcg(self):
         try:
-            f = open(self.path+'.rcg', 'r')
+            f = open(self.rcg_path, 'r')
         except:
             print("RCG file does not exist")
             exit(1)
@@ -87,7 +88,7 @@ class Parser:
 
     def set_data_rcl(self):
         try:
-            f = open(self.path+'.rcl', 'r')
+            f = open(self.rcl_path, 'r')
         except:
             print("RCL file does not exist")
             exit(1)

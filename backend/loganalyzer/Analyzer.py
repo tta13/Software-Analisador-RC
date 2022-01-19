@@ -45,41 +45,6 @@ class Analyzer:
         self.average_distance_10p_l = 0
         self.av_st_per_dist_10p_l = 0
 
-    def draw_heatmap(self, right_team=False, left_team=True):
-        import numpy as np
-        import matplotlib.pyplot as plt
-
-        world = np.zeros((110, 75))
-
-        if(right_team ):
-            team =self.game.right_team.agents
-        elif(left_team):
-            team =self.game.left_team.agents
-        # for cycle in self.play_on_cycles:
-        for cycle in self.play_on_cycles:
-            for agent in team:
-                if(agent.number != 1):
-                    x = int(round(agent.data[cycle]['x'], 1))+52
-                    y = int(round(agent.data[cycle]['y'], 1))+33
-                    for i in range(-4,5):
-                        for j in range(-4,5):
-                            try:
-                                world[x+i][y+j] += 5 - abs(j) 
-                            except:
-                                continue
-        fig, ax = plt.subplots()
-        ax.set_xticks(np.arange(len([])))
-        ax.set_yticks(np.arange(len([])))
-        ax.set_xticklabels([])
-        ax.set_yticklabels([])
-        cbarlabel="Relative Frequency"
-
-        im = ax.imshow(np.fliplr(world).T, interpolation='gaussian')
-        cbar = ax.figure.colorbar(im, ax=ax )
-        cbar.ax.set_ylabel(cbarlabel, rotation=-90, va="bottom")
-        plt.show()
-
-
     def line_intersection(self,line1, line2):
         def det(a, b):
             return a[0] * b[1] - a[1] * b[0]
