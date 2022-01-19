@@ -1,10 +1,8 @@
-import sys
-import os
 import argparse
 import json
-from Game import *
-from Parser import *
-from Analyzer import *
+from loganalyzer import Game
+from loganalyzer import Parser
+from loganalyzer import Analyzer
 
 
 def parse_args():
@@ -19,7 +17,6 @@ def parse_args():
     args = parser.parse_args()
     if args.output is None:
         args.output = args.rcg.split('.rcg')[0] + ".log.json"
-        print(args.output)
     return args
 
 
@@ -74,6 +71,12 @@ def write_to_file(save_path, analyzer):
     with open(save_path, 'w') as outfile:
         json.dump(data, outfile, indent=1)
 
+def run_analysis(rcg_path, rcl_path, output_path):
+    parser = Parser(rcg_path, rcl_path)
+    game = Game(parser)
+    analyzer = Analyzer(game)
+    analyzer.analyze()
+    write_to_file(output_path, analyzer)
 
 def main():
     args = parse_args()

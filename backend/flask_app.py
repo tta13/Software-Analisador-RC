@@ -1,6 +1,7 @@
 import glob, os
 from posixpath import curdir
-from flask import Flask, request, redirect, json
+from flask import Flask, request, redirect, json as flask_json
+from run import *
 
 script_directory = os.getcwd()
 data_dir = os.path.join(script_directory, 'data')
@@ -15,7 +16,7 @@ def get_matches():
         os.chdir(data_dir)
     for file in glob.glob("*.json"):
         result.append(file.split('.')[0])
-    response = json.jsonify({ 'matches': result })
+    response = flask_json.jsonify({ 'matches': result })
     response.headers.add('Access-Control-Allow-Origin', '*')
     return response
 
@@ -42,7 +43,7 @@ def receive_upload():
 
     print('Request received')
 
-    response = json.jsonify({'success': True, 'msg': ''})
+    response = flask_json.jsonify({'success': True, 'msg': ''})
     response.headers.add('Access-Control-Allow-Origin', '*')
 
     if request.method == 'POST':
@@ -51,14 +52,23 @@ def receive_upload():
             rcg = request.files['rcg']
             rcl = request.files['rcl']
             if compare_extension(rcg.filename, 'RCG') and compare_extension(rcl.filename, 'RCL'):
-                rcg.save(os.path.join(app.config['UPLOADS'], rcg.filename))
-                
-                rcl.save(os.path.join(app.config['UPLOADS'], rcl.filename))
-        
+                rcg_path = os.path.join(app.config['UPLOADS'], rcg.filename)
+                rcg.save(rcg_path)
+                rcl_path = os.path.join(app.config['UPLOADS'], rcl.filename) 
+                rcl.save(rcl_path)
+
+                try:
+                    run_analysis(rcg_path, rcl_path, rcg_path.split('.rcg')[0]+'.log.json')
+                except Exception as e: 
+                    error = 'Failed to run analysis: ' + str(e)
+                    print(error)
+                    response = flask_json.jsonify({'success': False, 'msg': error})
+                    response.headers.add('Access-Control-Allow-Origin', '*')
+                    return  response        
             else:
                 error = rcg.filename + ', ' + rcl.filename + ': file extension or name not allowed'
                 print(error)
-                response = json.jsonify({'success': False, 'msg': error})
+                response = flask_json.jsonify({'success': False, 'msg': error})
                 response.headers.add('Access-Control-Allow-Origin', '*')
                 return  response
 
