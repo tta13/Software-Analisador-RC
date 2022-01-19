@@ -1,3 +1,10 @@
-<h1 class="text-ligth m-1">Software Analisador</h1>
+<nav class="nav bg-dark d-flex">
+    <h2 class="text-light m-1">Software Analisador</h2>
+</nav>
+
+<nav class="nav d-flex">
+    <a class="nav-link" [routerLink]="['/upload']" routerLinkActive="router-link-active">Upload</a>
+    <a class="nav-link" [routerLink]="['/matches']" routerLinkActive="router-link-active">Matches</a>
+</nav>
 
 <router-outlet></router-outlet>
