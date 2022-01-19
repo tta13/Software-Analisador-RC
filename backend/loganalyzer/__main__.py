@@ -2,12 +2,9 @@ import sys
 import os
 import argparse
 import json
-from Game import *
-from Parser import *
-from Analyzer import *
-# from Parser import *
-# from Game import *
-# from Analyzer import *
+from .Game import *
+from .Parser import *
+from .Analyzer import *
 
 
 def parse_args():

@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
 
-from loganalyzer.Parser import *
-from loganalyzer.Game import *
-from loganalyzer.Analyzer import *
+from .Parser import *
+from .Game import *
+from .Analyzer import *
 
 
 parser = Parser('Data/20190213193824-Namira_4-vs-CYRUS2018_312')
