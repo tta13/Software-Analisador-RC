@@ -1,0 +1,16 @@
+.container {
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	z-index: 9999;
+	height: 100%;
+	background-color: rgba(255, 255, 255, 0.4);
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.mat-spinner::ng-deep circle {
+	stroke: rgb(2, 117, 216);
+}

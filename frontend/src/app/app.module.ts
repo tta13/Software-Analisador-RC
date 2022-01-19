@@ -7,6 +7,9 @@ import { AppComponent } from './app.component';
 import { UploadComponent } from './upload/upload.component';
 import { MatchesComponent } from './matches/matches.component';
 import { MatchTileTemplateComponent } from './matches/match-tile-template/match-tile-template.component';
+import { LoadingSpinnerComponent } from './upload/loading-spinner/loading-spinner.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 
 @NgModule({
@@ -14,12 +17,15 @@ import { MatchTileTemplateComponent } from './matches/match-tile-template/match-
     AppComponent,
     UploadComponent,
     MatchesComponent,
-    MatchTileTemplateComponent
+    MatchTileTemplateComponent,
+    LoadingSpinnerComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
+    BrowserAnimationsModule,
+    MatProgressSpinnerModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
