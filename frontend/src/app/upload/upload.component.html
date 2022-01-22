@@ -1,44 +1,38 @@
 <app-loading-spinner [isLoading]="isLoading()"></app-loading-spinner>
 
 <div class="container">
-    <div class="row">
-      <div class="col">
   
-        <h3>Upload Files</h3>
-        <hr>
-  
-        <div>
-  
-          <div class="form-group">
-            <label>Select RCG file</label>
-            <div class="custom-file">
-              <input type="file" name="rcg" id="rcg" (change)="onRCGFileChanged($event)">
-            </div>
-          </div>
-  
-          <div class="form-group">
-            <label>Select RCL file</label>
-            <div class="custom-file">
-              <input type="file" name="rcl" id="rcl" (change)="onRCLFileChanged($event)">
-            </div>
-          </div>
-  
-          <button *ngIf="canUpload()" class="btn btn-primary" (click)="submitFiles($event)">Upload</button>
+  <h3>Upload Files</h3>
+  <hr>
 
-          <hr>
-
-          <div *ngIf="!successfulUpload(); else successMessage" class="alert alert-danger" role="alert">
-                Unsuccessful Upload - {{ getMessage() }}
-          </div>
-                
-          <ng-template #successMessage>
-            <div *ngIf="hasUploaded" class="alert alert-success" role="alert">
-                Successful Upload!
-            </div>
-          </ng-template>
-  
-        </div>
-  
+  <div>
+    <div class="form-group">
+      <label>Select RCG file</label>
+      <div class="custom-file">
+        <input type="file" name="rcg" id="rcg" (change)="onRCGFileChanged($event)">
       </div>
     </div>
+
+    <div class="form-group">
+      <label>Select RCL file</label>
+      <div class="custom-file">
+        <input type="file" name="rcl" id="rcl" (change)="onRCLFileChanged($event)">
+      </div>
+    </div>
+
+    <button *ngIf="canUpload()" class="btn btn-primary" (click)="submitFiles($event)">Upload</button>
+
+    <hr>
+
+    <div *ngIf="!successfulUpload(); else successMessage" class="alert alert-danger" role="alert">
+          Unsuccessful Upload - {{ getMessage() }}
+    </div>
+          
+    <ng-template #successMessage>
+      <div *ngIf="hasUploaded" class="alert alert-success" role="alert">
+          Successful Upload!
+      </div>
+    </ng-template>
   </div>
+
+</div>
