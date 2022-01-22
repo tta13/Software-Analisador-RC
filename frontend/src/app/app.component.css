@@ -1,0 +1,17 @@
+a:link {
+    color: white;
+    background-color: transparent;
+    text-decoration: none;
+}
+
+a:visited {
+    color: rgb(195, 195, 195);
+    background-color: transparent;
+    text-decoration: none;
+}
+  
+a:hover {
+    color: whitesmoke;
+    background-color: transparent;
+    text-decoration: none;
+}
