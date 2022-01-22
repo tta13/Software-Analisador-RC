@@ -10,6 +10,7 @@ import { MatchTileTemplateComponent } from './matches/match-tile-template/match-
 import { LoadingSpinnerComponent } from './upload/loading-spinner/loading-spinner.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { MatchStatsComponent } from './match-stats/match-stats.component';
 
 
 @NgModule({
@@ -19,6 +20,7 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
     MatchesComponent,
     MatchTileTemplateComponent,
     LoadingSpinnerComponent,
+    MatchStatsComponent,
   ],
   imports: [
     BrowserModule,

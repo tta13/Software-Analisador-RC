@@ -20,10 +20,11 @@ def get_matches():
     response.headers.add('Access-Control-Allow-Origin', '*')
     return response
 
-@app.route('/matches/<match_id>/', methods = ['GET'])
+@app.route('/matches/<match_id>', methods = ['GET'])
 def get_matches_analysis(match_id: str):    
     with open(os.path.join(data_dir, match_id + '.log.json')) as file:
-        content = file.read()
+        content = flask_json.jsonify(file.read())
+        content.headers.add('Access-Control-Allow-Origin', '*')
         return content
 
 def compare_extension(filename: str, expected_extension: str) -> bool:
