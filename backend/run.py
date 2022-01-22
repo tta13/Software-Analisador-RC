@@ -13,7 +13,6 @@ def parse_args():
                         required=True, dest='rcl')
     parser.add_argument(
         "--output", help="Output saving path.", metavar='<Output file path>', dest='output')
-    parser.add_argument('--version', action='version', version='1.0.1')
     args = parser.parse_args()
     if args.output is None:
         args.output = args.rcg.split('.rcg')[0] + ".log.json"
