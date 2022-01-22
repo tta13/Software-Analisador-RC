@@ -80,14 +80,7 @@ def run_analysis(rcg_path, rcl_path, output_path):
 
 def main():
     args = parse_args()
-    rcg_path = args.rcg
-    rcl_path = args.rcl
-    save_path = args.output
-    parser = Parser(rcg_path, rcl_path)
-    game = Game(parser)
-    analyzer = Analyzer(game)
-    analyzer.analyze()
-    write_to_file(save_path, analyzer)
+    run_analysis(args.rcg, args.rcl, args.output)
 
 
 if __name__ == '__main__':
