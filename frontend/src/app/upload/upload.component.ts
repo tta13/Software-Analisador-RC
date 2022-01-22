@@ -19,6 +19,7 @@ export class UploadComponent implements OnInit {
   
   ngOnInit(): void {
     this.hasUploaded = false;
+    this.uploadService.onInit();
   }
   
   onRCGFileChanged(event){

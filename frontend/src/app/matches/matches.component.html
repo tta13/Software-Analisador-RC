@@ -1,7 +1,8 @@
 <div class="container">
-    <div class="row">
-        <div class="col">
-            <h3>Matches</h3>
+    <div>
+        <h3>Matches</h3>
+        <hr>
+        <div class="grid grid-template-columns">
             <app-match-tile-template *ngFor="let match of matchData.matches" [matchId]="match"></app-match-tile-template>
         </div>
     </div>

@@ -1,10 +1,14 @@
-<nav class="nav bg-dark d-flex">
-    <h2 class="text-light m-1">Software Analisador</h2>
+<nav class="nav">
+    <h2>Robocup Log Explorer</h2>
 </nav>
 
-<nav class="nav d-flex">
-    <a class="nav-link" [routerLink]="['/upload']" routerLinkActive="router-link-active">Upload</a>
-    <a class="nav-link" [routerLink]="['/matches']" routerLinkActive="router-link-active">Matches</a>
-</nav>
+<ul class="nav nav-pills d-flex">
+    <li class="nav-item dark">
+        <a class="nav-link" [routerLink]="['/upload']" routerLinkActive="router-link-active">Upload</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" [routerLink]="['/matches']" routerLinkActive="router-link-active">Matches</a>
+    </li>
+</ul>
 
 <router-outlet></router-outlet>

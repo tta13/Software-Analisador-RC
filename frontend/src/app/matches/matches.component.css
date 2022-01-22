@@ -1,0 +1,10 @@
+.grid {
+	display: grid;
+}
+
+/* 100px é o valor total, ignora conteúdo, margem e etc. Respeita apenas o min-width do item.*/
+.grid-template-columns {
+	grid-template-columns: 1fr 1fr;
+}
+
+hr { background-color: #696969; height: 1px; border: 0; }

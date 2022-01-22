@@ -13,6 +13,11 @@ export class UploadService {
 
   constructor(private httpClient: HttpClient) { }
 
+  onInit(){
+    this.rcgFile = null;
+    this.rclFile = null;
+  }
+
   updateRCLFile(newFile): void {
     this.rclFile = newFile;    
     console.log('Updated rcl file');
