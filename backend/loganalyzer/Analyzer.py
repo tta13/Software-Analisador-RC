@@ -211,13 +211,12 @@ class Analyzer:
                     self.pass_status = 1
                     self.pass_last_kick_cycle = key
 
-                elif(self.pass_last_kicker != self.game.get_last_kickers(key)[0]  and  self.pass_last_kicker.team == self.game.get_last_kickers(key)[0].team  ):
+                elif(self.pass_last_kicker != self.game.get_last_kickers(key)[0]  and  self.pass_last_kicker.team == self.game.get_last_kickers(key)[0].team):
                     self.i = self.i+1
                     if(self.pass_last_kicker.team.name == self.game.right_team.name):
                         self.pass_r += 1
                     else:
-                        self.pass_l += 1
-                   
+                        self.pass_l += 1                   
                         
                     self.pass_status = 1
                     self.pass_last_kicker = self.game.get_last_kickers(key)[0]
@@ -227,9 +226,10 @@ class Analyzer:
                     if(self.game.get_last_kickers(key)[0].team.name == self.game.right_team.name):
                         self.intercept_r += 1
                     else:
-                        self.intercept_l += 1                        
+                        self.intercept_l += 1                
                         
                     self.pass_status = 1
+                    self.shoot_status = 0
                     self.pass_last_kicker = self.game.get_last_kickers(key)[0]
                     self.pass_last_kick_cycle = key
 
@@ -255,9 +255,7 @@ class Analyzer:
                     self.fouls_l += 1
 
 
-    def analyze(self):
-        ''' pass, shoot, pass intercept, shot intercept, possesion ,  '''
-        
+    def analyze(self):        
         for key in range(1,self.play_on_cycles[-1]+1):
             self.check_pass(key)
             self.check_shoot(key)
