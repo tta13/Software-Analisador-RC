@@ -25,6 +25,9 @@ export class TeamData{
     passAccuracy: number;
     interceptions: number;
     possession: number;
+    fouls: number;
+    corners: number;
+    offsides: number;
     playerDistances: number[][];
     averageDistance10: number;
     playerStamina: number;
