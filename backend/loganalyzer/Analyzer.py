@@ -22,6 +22,9 @@ class Analyzer:
         self.off_target_shoot_r = 0
         self.shoot_accuracy_r = 0
         self.possession_r = 0
+        self.offsides_r = 0
+        self.fouls_r = 0
+        self.corners_r = 0
         self.used_stamina_agents_r = []
         self.team_moved_distance_r = []
         self.used_per_distance_r = []
@@ -38,6 +41,9 @@ class Analyzer:
         self.off_target_shoot_l = 0
         self.shoot_accuracy_l = 0
         self.possession_l = 0
+        self.offsides_l = 0
+        self.fouls_l = 0
+        self.corners_l = 0
         self.used_stamina_agents_l = []
         self.team_moved_distance_l = []
         self.used_per_distance_l = []
@@ -50,7 +56,7 @@ class Analyzer:
             return a[0] * b[1] - a[1] * b[0]
         
         xdiff = (line1[0][0] - line1[1][0], line2[0][0] - line2[1][0])
-        ydiff = (line1[0][1] - line1[1][1], line2[0][1] - line2[1][1]) #Typo was here
+        ydiff = (line1[0][1] - line1[1][1], line2[0][1] - line2[1][1])
         div = det(xdiff, ydiff)
         if div == 0:
            raise Exception('lines do not intersect!')
@@ -68,8 +74,7 @@ class Analyzer:
             for agent in (self.game.right_team.agents + self.game.left_team.agents):
                 p1 = (agent.data[key-1]['x'],agent.data[key-1]['y'])
                 p2 = (agent.data[key]['x'],agent.data[key]['y'])
-                if( distance(p1,p2) < 1.6):
-                    agent.moved_distance = agent.moved_distance +distance(p1,p2)
+                agent.moved_distance = agent.moved_distance +distance(p1,p2)
         
                 
     def update_parameters(self):
@@ -147,9 +152,7 @@ class Analyzer:
         if(key in self.play_on_cycles and len(self.game.get_last_kickers(key))>0):
             if(self.game.get_last_kickers(key)[0].team.name == self.game.left_team.name ):
                 self.possession_l +=1
-                # print("Left Team is ball Owner cycle ",key)
             else:
-                # print("Right Team is ball Owner cycle ",key)
                 self.possession_r +=1
 
         
@@ -233,6 +236,28 @@ class Analyzer:
                     self.pass_last_kicker = self.game.get_last_kickers(key)[0]
                     self.pass_last_kick_cycle = key
 
+    def update_play_mode(self, key):
+        if(key in self.game.play_modes):
+            split_play_mode = self.game.play_modes[key].rsplit('_')
+            mode = split_play_mode[0]
+            side = split_play_mode[-1]
+            if(mode == 'corner'):
+                if(side == 'r'):
+                    self.corners_r += 1
+                elif(side == 'l'):
+                    self.corners_l += 1
+            elif(mode == 'offside'):
+                if(side == 'r'):
+                    self.offsides_r += 1
+                elif(side == 'l'):
+                    self.offsides_l += 1
+            elif(mode == 'foul'):
+                if(side == 'r'):
+                    self.fouls_r += 1
+                elif(side == 'l'):
+                    self.fouls_l += 1
+
+
 
     def analyze(self):
         ''' pass, shoot, pass intercept, shot intercept, possesion ,  '''
@@ -242,4 +267,5 @@ class Analyzer:
             self.check_shoot(key)
             self.update_possession(key)
             self.update_distance(key)
+            self.update_play_mode(key)
         self.update_parameters()
