@@ -165,40 +165,34 @@ class Analyzer:
             if(key not in self.play_on_cycles):
                 self.shoot_status = 0
                 
-            elif( self.shoot_status == 0 and (self.game.ball_pos[key]['Vx']**2 + self.game.ball_pos[key]['Vy']**2)** 0.5  > 2.0 ):
+            elif(self.shoot_status == 0 and (self.game.ball_pos[key]['Vx']**2 + self.game.ball_pos[key]['Vy']**2)** 0.5  > self.game.server_param['ball_speed_max'] * self.game.server_param['shot_threshold'] ):
                 kickers = self.game.get_kickers(key)
-                if(len(kickers)>0 and kickers[0].team.name == self.game.right_team.name and math.hypot(kickers[0].data[key]['x']+51.6,kickers[0].data[key]['y'] )< 20 and self.game.ball_pos[key]['Vx']   ):
+                if(len(kickers)>0 and kickers[0].team.name == self.game.right_team.name and self.game.ball_pos[key]['Vx']):
                     ball1 = (self.game.ball_pos[key-1]['x'], self.game.ball_pos[key-1]['y'])
                     ball2 = (self.game.ball_pos[key]['x'], self.game.ball_pos[key]['y'])
                     if ball1[0]-ball2[0]>0:
-                        (x,y) = self.line_intersection((ball1,ball2) , ((-52.6,1),(-52.6,0)) )
+                        (x_right, y_right) = self.line_intersection((ball1,ball2), ((-53.0,1),(-53.0,0)))
                             
-                        if(abs(y)<7.5 ):
-                            # print( "On-Target Shoot", key , kickers[0].number , self.game.right_team.name)
-                            self.on_target_shoot_r +=1
-                            self.shoot_status       =1
-
-                        elif(abs(y)<16 and abs(y)>9):
-                            # print( "Off-Target Shoot", key ,kickers[0].number , self.game.right_team.name)
+                        if 7.5 < abs(y_right) < 17.5:
                             self.off_target_shoot_r +=1
                             self.shoot_status       =1
-                                                        
+                        elif abs(y_right) <= 7.5:
+                            self.on_target_shoot_r +=1
+                            self.shoot_status       =1                                                   
                             
-                elif(len(kickers)>0 and kickers[0].team.name == self.game.left_team.name and  math.hypot(kickers[0].data[key]['x']-51.6,kickers[0].data[key]['y'] ) < 20 and self.game.ball_pos[key]['Vx']):
+                elif(len(kickers)>0 and kickers[0].team.name == self.game.left_team.name and self.game.ball_pos[key]['Vx']):
                     ball1= (self.game.ball_pos[key-1]['x'], self.game.ball_pos[key-1]['y'])
                     ball2= (self.game.ball_pos[key]['x'], self.game.ball_pos[key]['y'])
                     if ball2[0]-ball1[0]>0:
-                        (x,y) = self.line_intersection( (ball1,ball2), ((52.6,1),(52.6,0)) )
+                        (x_left, y_left) = self.line_intersection((ball1,ball2), ((53.0,1),(53.0,0)))
     
-                        if(abs(y)<7.5 ):
-                            # print( "On-Target Shoot",key, kickers[0].number , self.game.left_team.name)
-                            self.on_target_shoot_l +=1
-                            self.shoot_status       =1
-                            
-                        elif(abs(y)<16 and abs(y)>9):
-                            # print( "Off-Target Shooet",key, kickers[0].number , self.game.left_team.name)
+                        if 7.5 < abs(y_left) < 17.5:
                             self.off_target_shoot_l+=1
                             self.shoot_status       =1
+                        elif abs(y_left) <= 7.5:
+                            self.on_target_shoot_l +=1
+                            self.shoot_status       =1                      
+                    
 
 
     def check_pass(self, key):
@@ -211,7 +205,7 @@ class Analyzer:
                 self.pass_last_kick_cycle = key
                 self.pass_status      = 1
 
-            elif(self.pass_status == 1 ):
+            elif(self.pass_status == 1):
 
                 if(self.pass_last_kicker == self.game.get_last_kickers(key)[0] and self.game.get_last_kickers(key)[0].data[key]['is_kicked']):
                     self.pass_status = 1
@@ -259,7 +253,6 @@ class Analyzer:
                     self.fouls_r += 1
                 elif(side == 'l'):
                     self.fouls_l += 1
-
 
 
     def analyze(self):

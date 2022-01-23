@@ -53,6 +53,8 @@ class Game:
                 for i in range(2, len(cycle[0])):
                     data[cycle[0][i][0]] = cycle[0][i][1]
                 self.agent_types[cycle[0][1][1]] = data
+        self.server_param['too_fast_threshold'] = 0.7
+        self.server_param['shot_threshold'] = 0.6
 
     def get_agent_data(self, side, number):
 
@@ -92,7 +94,7 @@ class Game:
 
         ball_v = (self.ball_pos[cycle]['Vx']*self.ball_pos[cycle]['Vx'] + self.ball_pos[cycle]['Vy']*self.ball_pos[cycle]['Vy'])**0.5
         ball_speed_max = self.server_param['ball_speed_max']
-        too_fast_threshold = 0.7
+        too_fast_threshold = self.server_param['too_fast_threshold']
 
         if ball_v < (too_fast_threshold * ball_speed_max):
             min_distance = 1000.0
