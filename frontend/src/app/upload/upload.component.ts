@@ -23,12 +23,14 @@ export class UploadComponent implements OnInit {
   }
   
   onRCGFileChanged(event){
+    this.hasUploaded = false;
     if(event.target.files && event.target.files[0]){
       this.uploadService.updateRCGFile(event.target.files[0]);
     }
   }
 
   onRCLFileChanged(event){
+    this.hasUploaded = false;
     if(event.target.files && event.target.files[0]){
       this.uploadService.updateRCLFile(event.target.files[0]);
     }
@@ -46,10 +48,9 @@ export class UploadComponent implements OnInit {
         next: (response) => {
           this.response = response;
 
-          if(this.response.success)
-            this.hasUploaded = true;
-			},
-			complete: () => this.loading.next(false),      
+          this.hasUploaded = true;
+			  },
+			  complete: () => this.loading.next(false),      
       });
   }
 

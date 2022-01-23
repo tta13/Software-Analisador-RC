@@ -61,16 +61,19 @@ def receive_upload():
                     error = 'Failed to run analysis: ' + str(e)
                     print(error)
                     response = flask_json.jsonify({'success': False, 'msg': error})
-                    return  response        
+                    return  response
+
+                print('Files saved')
+
+                output_file_id = rcg.filename.split('.rcg')[0]
+                response = flask_json.jsonify({'success': True, 'msg': output_file_id})
+                
+                return response      
             else:
                 error = rcg.filename + ', ' + rcl.filename + ': file extension or name not allowed'
                 print(error)
                 response = flask_json.jsonify({'success': False, 'msg': error})
-                return  response
-
-            print('Files saved')
-
-            return response
+                return  response            
 
     return response
 

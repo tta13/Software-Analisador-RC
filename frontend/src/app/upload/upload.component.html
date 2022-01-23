@@ -24,13 +24,13 @@
 
     <hr>
 
-    <div *ngIf="!successfulUpload(); else successMessage" class="alert alert-danger" role="alert">
+    <div *ngIf="!successfulUpload() && hasUploaded; else successMessage" class="alert alert-danger" role="alert">
           Unsuccessful Upload - {{ getMessage() }}
     </div>
           
     <ng-template #successMessage>
       <div *ngIf="hasUploaded" class="alert alert-success" role="alert">
-          Successful Upload!
+          Successful Upload! Checkout match stats <a routerLink="{{'/matches/' + getMessage()}}">here</a>.
       </div>
     </ng-template>
   </div>
