@@ -148,9 +148,12 @@ class Analyzer:
             self.av_st_per_dist_10p_l  = round(self.average_stamina_10p_l/self.average_distance_10p_l,1)
 
     def update_possession(self, key):
-        
-        if(key in self.play_on_cycles and len(self.game.get_last_kickers(key))>0):
-            if(self.game.get_last_kickers(key)[0].team.name == self.game.left_team.name ):
+        if key not in self.play_on_cycles:
+            return
+
+        ball_owner = self.game.get_ball_owner(key)
+        if ball_owner is not None:
+            if(ball_owner.team.name == self.game.left_team.name ):
                 self.possession_l +=1
             else:
                 self.possession_r +=1

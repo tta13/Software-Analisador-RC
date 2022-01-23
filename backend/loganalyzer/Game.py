@@ -1,3 +1,4 @@
+from sqlalchemy import null
 from .Team import *
 
 
@@ -83,5 +84,34 @@ class Game:
                     kickers.append(agent)
         return kickers
 
+    def get_ball_owner(self, cycle: int) -> Agent:
+        if cycle not in self.play_on_cycles:
+            return None
+        
+        last_kickers = self.get_last_kickers(cycle)
+
+        ball_v = (self.ball_pos[cycle]['Vx']*self.ball_pos[cycle]['Vx'] + self.ball_pos[cycle]['Vy']*self.ball_pos[cycle]['Vy'])**0.5
+        ball_speed_max = self.server_param['ball_speed_max']
+        too_fast_threshold = 0.7
+
+        if ball_v < (too_fast_threshold * ball_speed_max):
+            min_distance = 1000.0
+            closest_agent = 'not'
+            for agent in (self.left_team.agents + self.right_team.agents):
+                if not agent.is_close_enough(cycle):
+                    continue
+
+                distance = agent.distance_in_cycle(cycle, (self.ball_pos[cycle]['x'], self.ball_pos[cycle]['y']))
+                if distance < min_distance:
+                    min_distance = distance
+                    closest_agent = agent
+
+            if closest_agent != 'not':
+                return closest_agent
+        
+        if len(last_kickers) > 0:
+                return last_kickers[0]
+        return None
+            
     def get_play_on_cycles(self):
         return self.play_on_cycles

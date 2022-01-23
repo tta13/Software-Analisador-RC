@@ -1,5 +1,6 @@
 
 from math import degrees,atan
+from turtle import distance
 
 class Agent:
     
@@ -7,7 +8,6 @@ class Agent:
         self.team              = team
         self.number            = number
         self.kick_count        = 0
-        self.last_tackle_cycle = 0
         self.last_tackle_cycle = 0
         self.tackle_count      = 0
         self.data              = {}
@@ -83,20 +83,27 @@ class Agent:
             'lastkickCycle':self.last_tackle_cycle,\
             'last_tackle_cycle':self.last_tackle_cycle\
             }
+    
+    def distance(self, agent_pos: tuple, object_pos: tuple) -> float:
+        return  ((agent_pos[0] - object_pos[0])*(agent_pos[0] - object_pos[0]) + (agent_pos[1] - object_pos[1])*(agent_pos[1] - object_pos[1]))** 0.5
+
+    def distance_in_cycle(self, cycle: int, object_pos: tuple) -> float:
+        return  ((self.data[cycle]['x'] - object_pos[0])*(self.data[cycle]['x'] - object_pos[0]) + (self.data[cycle]['y'] - object_pos[1])*(self.data[cycle]['y'] - object_pos[1]))** 0.5
         
-    def is_in_tackle_area(self, game,agent_pos,ball_pos, agent_type):
+    def is_in_tackle_area(self, game, agent_pos: tuple, ball_pos: tuple, agent_type):
         
         agent_type   = game.agent_types[agent_type]
         kick_radius  = agent_type['player_size']+agent_type['kickable_margin']
-        dist        = (pow((agent_pos[0]- ball_pos[0]),2) + pow((agent_pos[1]- ball_pos[1]),2) )** 0.5
+        dist        = self.distance(agent_pos, ball_pos)
         if(kick_radius >= dist-1.60):
             return True
         else:
             return False
-    def is_in_kick_area(self, game,agent_pos,ball_pos, agent_type):
+    
+    def is_in_kick_area(self, game, agent_pos: tuple, ball_pos: tuple, agent_type):
         agent_type   = game.agent_types[agent_type]
         kick_radius  = agent_type['player_size']+agent_type['kickable_margin']
-        dist        = (pow((agent_pos[0]- ball_pos[0]),2) + pow((agent_pos[1]- ball_pos[1]),2) )** 0.5
+        dist        = self.distance(agent_pos, ball_pos)
         if(kick_radius >= dist-0.35):
             return True
         else:
@@ -280,11 +287,12 @@ class Agent:
             return True
         return False
     
-    def is_owner(self, game, cycle):
-    
-        kickers  = game.get_last_kickers(cycle)
-        if(len(kickers)==1 and kickers[0] == self and  self.is_in_kick_area(game, cycle)):
-            return True
+    def is_owner(self, kickers, cycle) -> bool:
+        if(self in kickers):
+            return self.data[cycle]['is_in_kick_area'] or self.data[cycle]['is_in_tackle_area']
         else:
             return False
+
+    def is_close_enough(self, cycle) -> bool:
+        return self.data[cycle]['is_in_kick_area'] or self.data[cycle]['is_in_tackle_area']
      
