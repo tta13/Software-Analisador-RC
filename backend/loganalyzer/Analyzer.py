@@ -167,7 +167,7 @@ class Analyzer:
                 
             elif(self.shoot_status == 0 and (self.game.ball_pos[key]['Vx']**2 + self.game.ball_pos[key]['Vy']**2)** 0.5  > self.game.server_param['ball_speed_max'] * self.game.server_param['shot_threshold'] ):
                 kickers = self.game.get_kickers(key)
-                if(len(kickers)>0 and kickers[0].team.name == self.game.right_team.name and self.game.ball_pos[key]['Vx']):
+                if(len(kickers)>0 and kickers[0].team.name == self.game.right_team.name and kickers[0].data[key]['x'] < 0 and self.game.ball_pos[key]['Vx']):
                     ball1 = (self.game.ball_pos[key-1]['x'], self.game.ball_pos[key-1]['y'])
                     ball2 = (self.game.ball_pos[key]['x'], self.game.ball_pos[key]['y'])
                     if ball1[0]-ball2[0]>0:
@@ -180,7 +180,7 @@ class Analyzer:
                             self.on_target_shoot_r +=1
                             self.shoot_status       =1                                                   
                             
-                elif(len(kickers)>0 and kickers[0].team.name == self.game.left_team.name and self.game.ball_pos[key]['Vx']):
+                elif(len(kickers)>0 and kickers[0].team.name == self.game.left_team.name and kickers[0].data[key]['x'] > 0 and self.game.ball_pos[key]['Vx']):
                     ball1= (self.game.ball_pos[key-1]['x'], self.game.ball_pos[key-1]['y'])
                     ball2= (self.game.ball_pos[key]['x'], self.game.ball_pos[key]['y'])
                     if ball2[0]-ball1[0]>0:
