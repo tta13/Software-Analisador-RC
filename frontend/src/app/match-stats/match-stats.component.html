@@ -1,4 +1,6 @@
-<div class="container">
+<app-loading-spinner [isLoading]="isLoading()"></app-loading-spinner>
+
+<div *ngIf="!(isLoading() | async)" class="container">
     <div>
         <h3>Match Stats</h3>
         <hr>
@@ -12,64 +14,64 @@
             </thead>
             <tbody>
                 <tr>
-                    <th>{{matchData.leftTeam.goals}}</th>
-                    <th>Goals</th>
-                    <th>{{matchData.rightTeam.goals}}</th>
+                    <td>{{matchData.leftTeam.goals}}</td>
+                    <td>Goals</td>
+                    <td>{{matchData.rightTeam.goals}}</td>
                 </tr>
                 <tr>
-                    <th>{{matchData.leftTeam.shots}}</th>
-                    <th>Shots</th>
-                    <th>{{matchData.rightTeam.shots}}</th>
+                    <td>{{matchData.leftTeam.shots}}</td>
+                    <td>Shots</td>
+                    <td>{{matchData.rightTeam.shots}}</td>
                 </tr>
                 <tr>
-                    <th>{{matchData.leftTeam.onTargetShots}}</th>
-                    <th>Shots on target</th>
-                    <th>{{matchData.rightTeam.onTargetShots}}</th>
+                    <td>{{matchData.leftTeam.onTargetShots}}</td>
+                    <td>Shots on target</td>
+                    <td>{{matchData.rightTeam.onTargetShots}}</td>
                 </tr>
                 <tr>
-                    <th>{{matchData.leftTeam.shotAccuracy}}%</th>
-                    <th>Shot accuracy</th>
-                    <th>{{matchData.rightTeam.shotAccuracy}}%</th>
+                    <td>{{matchData.leftTeam.shotAccuracy}}%</td>
+                    <td>Shot accuracy</td>
+                    <td>{{matchData.rightTeam.shotAccuracy}}%</td>
                 </tr>
                 <tr>
-                    <th>{{matchData.leftTeam.possession}}%</th>
-                    <th>Possession</th>
-                    <th>{{matchData.rightTeam.possession}}%</th>
+                    <td>{{matchData.leftTeam.possession}}%</td>
+                    <td>Possession</td>
+                    <td>{{matchData.rightTeam.possession}}%</td>
                 </tr>
                 <tr>
-                    <th>{{matchData.leftTeam.completedPasses}}</th>
-                    <th>Completed passes</th>
-                    <th>{{matchData.rightTeam.completedPasses}}</th>
+                    <td>{{matchData.leftTeam.completedPasses}}</td>
+                    <td>Completed passes</td>
+                    <td>{{matchData.rightTeam.completedPasses}}</td>
                 </tr>
                 <tr>
-                    <th>{{matchData.leftTeam.wrongPasses}}</th>
-                    <th>Wrong passes</th>
-                    <th>{{matchData.rightTeam.wrongPasses}}</th>
+                    <td>{{matchData.leftTeam.wrongPasses}}</td>
+                    <td>Wrong passes</td>
+                    <td>{{matchData.rightTeam.wrongPasses}}</td>
                 </tr>
                 <tr>
-                    <th>{{matchData.leftTeam.passAccuracy}}%</th>
-                    <th>Pass accuracy</th>
-                    <th>{{matchData.rightTeam.passAccuracy}}%   </th>
+                    <td>{{matchData.leftTeam.passAccuracy}}%</td>
+                    <td>Pass accuracy</td>
+                    <td>{{matchData.rightTeam.passAccuracy}}%   </td>
                 </tr>
                 <tr>
-                    <th>{{matchData.leftTeam.interceptions}}</th>
-                    <th>Interceptions</th>
-                    <th>{{matchData.rightTeam.interceptions}}</th>
+                    <td>{{matchData.leftTeam.interceptions}}</td>
+                    <td>Interceptions</td>
+                    <td>{{matchData.rightTeam.interceptions}}</td>
                 </tr>
                 <tr>
-                    <th>{{matchData.leftTeam.fouls}}</th>
-                    <th>Fouls</th>
-                    <th>{{matchData.rightTeam.fouls}}</th>
+                    <td>{{matchData.leftTeam.fouls}}</td>
+                    <td>Fouls</td>
+                    <td>{{matchData.rightTeam.fouls}}</td>
                 </tr>
                 <tr>
-                    <th>{{matchData.leftTeam.offsides}}</th>
-                    <th>Offsides</th>
-                    <th>{{matchData.rightTeam.offsides}}</th>
+                    <td>{{matchData.leftTeam.offsides}}</td>
+                    <td>Offsides</td>
+                    <td>{{matchData.rightTeam.offsides}}</td>
                 </tr>
                 <tr>
-                    <th>{{matchData.leftTeam.corners}}</th>
-                    <th>Corners</th>
-                    <th>{{matchData.rightTeam.corners}}</th>
+                    <td>{{matchData.leftTeam.corners}}</td>
+                    <td>Corners</td>
+                    <td>{{matchData.rightTeam.corners}}</td>
                 </tr>
             </tbody>
         </table>
