@@ -5,62 +5,65 @@
  },
  "leftTeam": {
   "teamName": "Receptivity",
-  "shots": 3,
-  "onTargetShots": 3,
-  "shotAccuracy": 100.0,
+  "shots": 6,
+  "onTargetShots": 4,
+  "shotAccuracy": 66.7,
   "goals": 1,
   "completedPasses": 116,
   "wrongPasses": 28,
   "passAccuracy": 80.6,
   "interceptions": 46,
-  "possession": 50.2,
+  "possession": 49.2,
+  "fouls": 7,
+  "corners": 4,
+  "offsides": 5,
   "playersDistances": [
    [
     187.75,
     1
    ],
    [
-    1647.92,
+    1718.36,
     2
    ],
    [
-    1599.73,
+    1673.32,
     3
    ],
    [
-    1761.43,
+    1843.17,
     4
    ],
    [
-    1620.82,
+    1686.25,
     5
    ],
    [
-    2137.13,
+    2278.41,
     6
    ],
    [
-    1915.46,
+    2078.2,
     7
    ],
    [
-    1981.93,
+    2168.05,
     8
    ],
    [
-    2040.19,
+    2195.49,
     9
    ],
    [
-    2034.67,
+    2261.51,
     10
    ],
    [
-    1897.57,
+    2135.22,
     11
    ]
   ],
-  "averageDistance10": 1863.7,
+  "averageDistance10": 2003.8,
   "playersStamina": [
    [
     14545,
@@ -108,50 +111,50 @@
    ]
   ],
   "averageStamina10": 86156.9,
-  "averageStaminaPerDistance10": 46.2,
+  "averageStaminaPerDistance10": 43.0,
   "staminaPerDistance": [
    [
     77.5,
     1
    ],
    [
-    59.3,
+    56.9,
     2
    ],
    [
-    60.5,
+    57.8,
     3
    ],
    [
-    63.0,
+    60.2,
     4
    ],
    [
-    60.3,
+    58.0,
     5
    ],
    [
-    7.1,
+    6.6,
     6
    ],
    [
-    7.2,
+    6.7,
     7
    ],
    [
-    11.7,
+    10.7,
     8
    ],
    [
-    63.8,
+    59.3,
     9
    ],
    [
-    67.5,
+    60.8,
     10
    ],
    [
-    73.0,
+    64.9,
     11
    ]
   ]
@@ -166,54 +169,57 @@
   "wrongPasses": 46,
   "passAccuracy": 73.6,
   "interceptions": 28,
-  "possession": 49.8,
+  "possession": 50.8,
+  "fouls": 7,
+  "corners": 2,
+  "offsides": 0,
   "playersDistances": [
    [
-    271.54,
+    273.19,
     1
    ],
    [
-    1504.17,
+    1601.03,
     2
    ],
    [
-    1543.08,
+    1650.0,
     3
    ],
    [
-    1659.37,
+    1779.81,
     4
    ],
    [
-    1708.31,
+    1839.62,
     5
    ],
    [
-    1910.33,
+    2013.87,
     6
    ],
    [
-    1993.76,
+    2123.92,
     7
    ],
    [
-    1839.87,
+    2014.86,
     8
    ],
    [
-    1604.66,
+    1668.16,
     9
    ],
    [
-    1668.46,
+    1801.59,
     10
    ],
    [
-    1809.23,
+    1941.63,
     11
    ]
   ],
-  "averageDistance10": 1724.1,
+  "averageDistance10": 1843.4,
   "playersStamina": [
    [
     15920,
@@ -261,50 +267,50 @@
    ]
   ],
   "averageStamina10": 116021.9,
-  "averageStaminaPerDistance10": 67.3,
+  "averageStaminaPerDistance10": 62.9,
   "staminaPerDistance": [
    [
-    58.6,
+    58.3,
     1
    ],
    [
-    62.9,
+    59.1,
     2
    ],
    [
-    66.1,
+    61.8,
     3
    ],
    [
-    61.2,
+    57.0,
     4
    ],
    [
-    63.2,
+    58.7,
     5
    ],
    [
-    72.5,
+    68.8,
     6
    ],
    [
-    68.6,
+    64.4,
     7
    ],
    [
-    75.3,
+    68.8,
     8
    ],
    [
-    65.7,
+    63.2,
     9
    ],
    [
-    68.6,
+    63.5,
     10
    ],
    [
-    66.5,
+    62.0,
     11
    ]
   ]

@@ -5,62 +5,65 @@
  },
  "leftTeam": {
   "teamName": "Fractals2019",
-  "shots": 5,
-  "onTargetShots": 3,
-  "shotAccuracy": 60.0,
+  "shots": 12,
+  "onTargetShots": 5,
+  "shotAccuracy": 41.7,
   "goals": 2,
   "completedPasses": 106,
   "wrongPasses": 39,
   "passAccuracy": 73.1,
   "interceptions": 39,
-  "possession": 38.2,
+  "possession": 37.9,
+  "fouls": 5,
+  "corners": 1,
+  "offsides": 0,
   "playersDistances": [
    [
     148.82,
     1
    ],
    [
-    1785.55,
+    1856.52,
     2
    ],
    [
-    1731.1,
+    1804.69,
     3
    ],
    [
-    1753.16,
+    1810.29,
     4
    ],
    [
-    1837.51,
+    1884.41,
     5
    ],
    [
-    2112.28,
+    2225.45,
     6
    ],
    [
-    1983.07,
+    2086.64,
     7
    ],
    [
-    2065.58,
+    2163.95,
     8
    ],
    [
-    2116.04,
+    2213.42,
     9
    ],
    [
-    2218.04,
+    2284.7,
     10
    ],
    [
-    1994.37,
+    2078.41,
     11
    ]
   ],
-  "averageDistance10": 1959.7,
+  "averageDistance10": 2040.8,
   "playersStamina": [
    [
     11445,
@@ -108,112 +111,115 @@
    ]
   ],
   "averageStamina10": 107593.0,
-  "averageStaminaPerDistance10": 54.9,
+  "averageStaminaPerDistance10": 52.7,
   "staminaPerDistance": [
    [
     76.9,
     1
    ],
    [
-    52.5,
+    50.5,
     2
    ],
    [
-    54.5,
+    52.2,
     3
    ],
    [
-    57.9,
+    56.1,
     4
    ],
    [
-    56.5,
+    55.0,
     5
    ],
    [
-    8.1,
+    7.7,
     6
    ],
    [
-    69.9,
+    66.4,
     7
    ],
    [
-    67.1,
+    64.0,
     8
    ],
    [
-    62.1,
+    59.4,
     9
    ],
    [
-    57.4,
+    55.7,
     10
    ],
    [
-    64.9,
+    62.2,
     11
    ]
   ]
  },
  "rightTeam": {
   "teamName": "MT2019",
-  "shots": 0,
-  "onTargetShots": 0,
-  "shotAccuracy": 0,
+  "shots": 3,
+  "onTargetShots": 1,
+  "shotAccuracy": 33.3,
   "goals": 1,
   "completedPasses": 186,
   "wrongPasses": 39,
   "passAccuracy": 82.7,
   "interceptions": 39,
-  "possession": 61.8,
+  "possession": 62.1,
+  "fouls": 4,
+  "corners": 0,
+  "offsides": 0,
   "playersDistances": [
    [
-    1119.99,
+    1195.16,
     1
    ],
    [
-    1586.88,
+    1657.95,
     2
    ],
    [
-    1531.2,
+    1610.56,
     3
    ],
    [
-    1516.18,
+    1596.21,
     4
    ],
    [
-    1482.31,
+    1583.91,
     5
    ],
    [
-    2134.6,
+    2215.76,
     6
    ],
    [
-    2020.7,
+    2123.38,
     7
    ],
    [
-    1844.01,
+    1930.02,
     8
    ],
    [
-    1813.45,
+    1912.62,
     9
    ],
    [
-    1901.25,
+    1983.94,
     10
    ],
    [
-    2130.73,
+    2207.65,
     11
    ]
   ],
-  "averageDistance10": 1796.1,
+  "averageDistance10": 1882.2,
   "playersStamina": [
    [
     92196.5,
@@ -261,50 +267,50 @@
    ]
   ],
   "averageStamina10": 112754.5,
-  "averageStaminaPerDistance10": 62.8,
+  "averageStaminaPerDistance10": 59.9,
   "staminaPerDistance": [
    [
-    82.3,
+    77.1,
     1
    ],
    [
-    57.5,
+    55.0,
     2
    ],
    [
-    62.8,
+    59.7,
     3
    ],
    [
-    66.2,
+    62.9,
     4
    ],
    [
-    70.8,
+    66.3,
     5
    ],
    [
-    60.9,
+    58.7,
     6
    ],
    [
-    68.6,
+    65.2,
     7
    ],
    [
-    67.8,
+    64.8,
     8
    ],
    [
-    61.2,
+    58.0,
     9
    ],
    [
-    59.4,
+    56.9,
     10
    ],
    [
-    55.1,
+    53.2,
     11
    ]
   ]
