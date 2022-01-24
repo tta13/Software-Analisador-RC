@@ -26,6 +26,17 @@ export class UploadComponent implements OnInit {
     this.hasUploaded = false;
     if(event.target.files && event.target.files[0]){
       this.uploadService.updateRCGFile(event.target.files[0]);
+
+      const element = document.getElementById('customFileLabel-rcg');
+      if(element){    
+        element.innerHTML = event.target.files[0].name;
+      }
+    }else{      
+      this.uploadService.updateRCLFile(null);
+
+      const element = document.getElementById('customFileLabel-rcg');
+      if(element)
+        element.innerHTML = "Select .rcg file";
     }
   }
 
@@ -33,6 +44,17 @@ export class UploadComponent implements OnInit {
     this.hasUploaded = false;
     if(event.target.files && event.target.files[0]){
       this.uploadService.updateRCLFile(event.target.files[0]);
+
+      const element = document.getElementById('customFileLabel-rcl');
+      if(element)
+        element.innerHTML = event.target.files[0].name;
+    }
+    else{
+      this.uploadService.updateRCLFile(null);
+
+      const element = document.getElementById('customFileLabel-rcl');
+      if(element)
+        element.innerHTML = "Select .rcl file";
     }
   }
 

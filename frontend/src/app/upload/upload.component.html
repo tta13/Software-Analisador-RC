@@ -7,16 +7,18 @@
 
   <div>
     <div class="form-group">
-      <label>Select RCG file</label>
+      <label>RCG file:</label>
       <div class="custom-file">
-        <input type="file" name="rcg" id="rcg" (change)="onRCGFileChanged($event)">
+        <input type="file" class="custom-file-input" id="customFile-rcg" (change)="onRCGFileChanged($event)">
+        <label class="custom-file-label" for="customFile-rcg" id="customFileLabel-rcg">Select .rcg file</label>
       </div>
     </div>
 
     <div class="form-group">
-      <label>Select RCL file</label>
+      <label>RCL file:</label>
       <div class="custom-file">
-        <input type="file" name="rcl" id="rcl" (change)="onRCLFileChanged($event)">
+        <input type="file" class="custom-file-input" id="customFile-rcl" (change)="onRCLFileChanged($event)">
+        <label class="custom-file-label" for="customFile-rcl" id="customFileLabel-rcl">Select .rcl file</label>
       </div>
     </div>
 
