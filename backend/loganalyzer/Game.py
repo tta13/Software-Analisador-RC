@@ -1,6 +1,4 @@
-from sqlalchemy import null
 from .Team import *
-
 
 class Game:
 
