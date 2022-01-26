@@ -36,4 +36,24 @@ export class MatchStatsComponent implements OnInit {
   isLoading(): Observable<boolean> {
     return this.loading.asObservable();
   }
+
+  parseScorers(scorers: [number,string][]): string{
+    if(scorers == null || scorers.length === 0)
+      return '-'
+    let scorerString: string = '';
+    const scorersSize = scorers.length;
+    for(var i=0; i < scorersSize; i++){
+      scorerString += this.convertCycleToHumanReadable(scorers[i][0]) + ' ' + scorers[i][1];
+      if((i+1) != scorersSize)
+        scorerString += '\n';
+    }
+    return scorerString;
+  }
+
+  convertCycleToHumanReadable(cycle: number): string {
+    const seconds = Math.floor(cycle / 10);
+    const remainingSeconds = seconds % 60;
+    const minutes: number = remainingSeconds > 30 ? Math.ceil(seconds / 60) : Math.floor(seconds / 60);
+    return minutes+"\'";
+  }
 }

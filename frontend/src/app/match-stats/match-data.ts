@@ -10,16 +10,17 @@ export class MatchData {
     }
 }
 
-export class GameResult{
+export class GameResult {
     leftScore: number; rightScore: number;
 }
 
-export class TeamData{
+export class TeamData {
     teamName: string;
     shots: number;
     onTargetShots: number;
     shotAccuracy: number;
     goals: number;
+    scorers: [number,string][];
     completedPasses: number;
     wrongPasses: number;
     passAccuracy: number;
