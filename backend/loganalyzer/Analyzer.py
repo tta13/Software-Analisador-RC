@@ -8,6 +8,7 @@ class Analyzer:
         self.play_on_cycles = game.get_play_on_cycles()
         self.pass_status = 0  # 0 --> no kick,  1 --> one kicker detected
         self.shoot_status = 0
+        self.last_shooter = 'not'
         self.pass_last_kicker = -1
         self.pass_last_kick_cycle = -1
         self.i = 0
@@ -21,6 +22,8 @@ class Analyzer:
         self.on_target_shoot_r = 0
         self.off_target_shoot_r = 0
         self.shoot_accuracy_r = 0
+        self.score_r = 0
+        self.scorers_r = []
         self.possession_r = 0
         self.offsides_r = 0
         self.fouls_r = 0
@@ -40,6 +43,8 @@ class Analyzer:
         self.on_target_shoot_l = 0
         self.off_target_shoot_l = 0
         self.shoot_accuracy_l = 0
+        self.score_l = 0
+        self.scorers_l = []
         self.possession_l = 0
         self.offsides_l = 0
         self.fouls_l = 0
@@ -165,35 +170,45 @@ class Analyzer:
             if(key not in self.play_on_cycles):
                 self.shoot_status = 0
                 
-            elif(self.shoot_status == 0 and (self.game.ball_pos[key]['Vx']**2 + self.game.ball_pos[key]['Vy']**2)** 0.5  > self.game.server_param['ball_speed_max'] * self.game.server_param['shot_threshold'] ):
+            elif((self.game.ball_pos[key]['Vx']**2 + self.game.ball_pos[key]['Vy']**2)** 0.5  > self.game.server_param['ball_speed_max'] * self.game.server_param['shot_threshold'] ):
                 kickers = self.game.get_kickers(key)
                 if(len(kickers)>0 and kickers[0].team.name == self.game.right_team.name and kickers[0].data[key]['x'] < 0 and self.game.ball_pos[key]['Vx']):
                     ball1 = (self.game.ball_pos[key-1]['x'], self.game.ball_pos[key-1]['y'])
                     ball2 = (self.game.ball_pos[key]['x'], self.game.ball_pos[key]['y'])
                     if ball1[0]-ball2[0]>0:
                         (x_right, y_right) = self.line_intersection((ball1,ball2), ((-53.0,1),(-53.0,0)))
+
+                        # print(f'Possible shot: {key}, r_{kickers[0].number} - (x:{x_right},y:{y_right})')
                             
                         if 7.5 < abs(y_right) < 17.5:
                             self.off_target_shoot_r +=1
                             self.shoot_status       =1
+                            # print(f'Shot detected:  {key}, r_{kickers[0].number}')
+                            self.last_shooter = kickers[0]
                         elif abs(y_right) <= 7.5:
                             self.on_target_shoot_r +=1
-                            self.shoot_status       =1                                                   
+                            self.shoot_status       =1
+                            # print(f'On target shot detected:  {key}, r_{kickers[0].number}')  
+                            self.last_shooter = kickers[0]                                        
                             
                 elif(len(kickers)>0 and kickers[0].team.name == self.game.left_team.name and kickers[0].data[key]['x'] > 0 and self.game.ball_pos[key]['Vx']):
                     ball1= (self.game.ball_pos[key-1]['x'], self.game.ball_pos[key-1]['y'])
                     ball2= (self.game.ball_pos[key]['x'], self.game.ball_pos[key]['y'])
                     if ball2[0]-ball1[0]>0:
                         (x_left, y_left) = self.line_intersection((ball1,ball2), ((53.0,1),(53.0,0)))
+
+                        # print(f'Possible shot: {key}, l_{kickers[0].number} - (x:{x_left},y:{y_left})')
     
                         if 7.5 < abs(y_left) < 17.5:
                             self.off_target_shoot_l+=1
                             self.shoot_status       =1
+                            # print(f'Shot detected:  {key}, l_{kickers[0].number}')
+                            self.last_shooter = kickers[0]
                         elif abs(y_left) <= 7.5:
                             self.on_target_shoot_l +=1
-                            self.shoot_status       =1                      
-                    
-
+                            self.shoot_status       =1    
+                            # print(f'On target shot detected:  {key}, l_{kickers[0].number}')
+                            self.last_shooter = kickers[0]
 
     def check_pass(self, key):
         if len(self.game.get_last_kickers(key))>0:
@@ -253,7 +268,20 @@ class Analyzer:
                     self.fouls_r += 1
                 elif(side == 'l'):
                     self.fouls_l += 1
-
+            elif(mode == 'goal'):
+                side = split_play_mode[1]
+                if(side == 'r'):
+                    self.score_r += 1
+                    if(self.last_shooter.team.name == self.game.right_team.name):
+                        self.scorers_r.append([key, f'{self.last_shooter.team.name}_{self.last_shooter.number}'])
+                    else:
+                        self.scorers_r.append([key, 'Own goal'])
+                elif(side == 'l'):
+                    self.score_l += 1
+                    if(self.last_shooter.team.name == self.game.left_team.name):
+                        self.scorers_l.append([key, f'{self.last_shooter.team.name}_{self.last_shooter.number}'])
+                    else:
+                        self.scorers_l.append([key, 'Own goal'])
 
     def analyze(self):        
         for key in range(1,self.play_on_cycles[-1]+1):
