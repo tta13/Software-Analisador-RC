@@ -5,10 +5,16 @@
  },
  "leftTeam": {
   "teamName": "Receptivity",
-  "shots": 6,
-  "onTargetShots": 5,
-  "shotAccuracy": 83.3,
+  "shots": 7,
+  "onTargetShots": 6,
+  "shotAccuracy": 85.7,
   "goals": 1,
+  "scorers": [
+   [
+    3545,
+    "Receptivity_9"
+   ]
+  ],
   "completedPasses": 131,
   "wrongPasses": 30,
   "passAccuracy": 81.4,
@@ -161,10 +167,16 @@
  },
  "rightTeam": {
   "teamName": "MT2019",
-  "shots": 7,
-  "onTargetShots": 3,
-  "shotAccuracy": 42.9,
+  "shots": 8,
+  "onTargetShots": 4,
+  "shotAccuracy": 50.0,
   "goals": 1,
+  "scorers": [
+   [
+    478,
+    "MT2019_11"
+   ]
+  ],
   "completedPasses": 186,
   "wrongPasses": 39,
   "passAccuracy": 82.7,

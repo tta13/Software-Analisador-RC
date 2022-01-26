@@ -9,6 +9,7 @@
   "onTargetShots": 1,
   "shotAccuracy": 100.0,
   "goals": 0,
+  "scorers": [],
   "completedPasses": 116,
   "wrongPasses": 25,
   "passAccuracy": 82.3,
@@ -161,10 +162,24 @@
  },
  "rightTeam": {
   "teamName": "MT2019",
-  "shots": 5,
-  "onTargetShots": 4,
-  "shotAccuracy": 80.0,
+  "shots": 7,
+  "onTargetShots": 6,
+  "shotAccuracy": 85.7,
   "goals": 3,
+  "scorers": [
+   [
+    587,
+    "MT2019_11"
+   ],
+   [
+    2252,
+    "MT2019_11"
+   ],
+   [
+    3363,
+    "MT2019_11"
+   ]
+  ],
   "completedPasses": 212,
   "wrongPasses": 26,
   "passAccuracy": 89.1,

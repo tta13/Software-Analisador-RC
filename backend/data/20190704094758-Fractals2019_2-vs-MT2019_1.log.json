@@ -5,10 +5,20 @@
  },
  "leftTeam": {
   "teamName": "Fractals2019",
-  "shots": 12,
-  "onTargetShots": 5,
-  "shotAccuracy": 41.7,
+  "shots": 13,
+  "onTargetShots": 6,
+  "shotAccuracy": 46.2,
   "goals": 2,
+  "scorers": [
+   [
+    892,
+    "Fractals2019_9"
+   ],
+   [
+    1490,
+    "Fractals2019_11"
+   ]
+  ],
   "completedPasses": 106,
   "wrongPasses": 39,
   "passAccuracy": 73.1,
@@ -161,10 +171,16 @@
  },
  "rightTeam": {
   "teamName": "MT2019",
-  "shots": 3,
-  "onTargetShots": 1,
-  "shotAccuracy": 33.3,
+  "shots": 4,
+  "onTargetShots": 2,
+  "shotAccuracy": 50.0,
   "goals": 1,
+  "scorers": [
+   [
+    4661,
+    "Own goal"
+   ]
+  ],
   "completedPasses": 186,
   "wrongPasses": 39,
   "passAccuracy": 82.7,

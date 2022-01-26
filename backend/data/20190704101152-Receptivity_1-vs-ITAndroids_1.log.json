@@ -9,6 +9,12 @@
   "onTargetShots": 4,
   "shotAccuracy": 66.7,
   "goals": 1,
+  "scorers": [
+   [
+    2454,
+    "Receptivity_9"
+   ]
+  ],
   "completedPasses": 116,
   "wrongPasses": 28,
   "passAccuracy": 80.6,
@@ -165,6 +171,12 @@
   "onTargetShots": 2,
   "shotAccuracy": 100.0,
   "goals": 1,
+  "scorers": [
+   [
+    5600,
+    "ITAndroids_9"
+   ]
+  ],
   "completedPasses": 128,
   "wrongPasses": 46,
   "passAccuracy": 73.6,

@@ -9,6 +9,7 @@
   "onTargetShots": 1,
   "shotAccuracy": 50.0,
   "goals": 0,
+  "scorers": [],
   "completedPasses": 141,
   "wrongPasses": 56,
   "passAccuracy": 71.6,
@@ -161,10 +162,24 @@
  },
  "rightTeam": {
   "teamName": "Fractals2019",
-  "shots": 8,
-  "onTargetShots": 5,
-  "shotAccuracy": 62.5,
+  "shots": 9,
+  "onTargetShots": 6,
+  "shotAccuracy": 66.7,
   "goals": 3,
+  "scorers": [
+   [
+    3366,
+    "Fractals2019_7"
+   ],
+   [
+    3490,
+    "Fractals2019_9"
+   ],
+   [
+    4478,
+    "Fractals2019_11"
+   ]
+  ],
   "completedPasses": 112,
   "wrongPasses": 44,
   "passAccuracy": 71.8,
