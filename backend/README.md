@@ -11,6 +11,7 @@ The backend consists of a Flask application that listens and answers to HTTP req
 	* onTargetShots: on target shots computed for the team
 	* shotAccuracy: % of shots on target relative to total shots
 	* goals: goals scored by the team
+	* scorers: list of goal scorers and the cycle in which they scored
 	* completedPasses: # of completed passes
 	* wrongPasses: # of intercepted passes
 	* passAccuracy: % of completed passes
