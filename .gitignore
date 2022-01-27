@@ -1,11 +1,7 @@
-build/
-dist/
+# Python files
 __pycache__/
-loganalyzer.egg-info/
-setup.py
 
+# Log files
 *.rcg
 *.rcl
 *.csv
-
-node_modules
