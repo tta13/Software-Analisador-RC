@@ -1,6 +1,4 @@
-
 from math import degrees,atan
-from turtle import distance
 
 class Agent:
     

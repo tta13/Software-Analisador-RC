@@ -1,5 +1,3 @@
-import math
-
 class Analyzer:
 
     def __init__(self, game):

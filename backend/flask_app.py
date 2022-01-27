@@ -1,8 +1,7 @@
 import glob, os
-from posixpath import curdir
 from flask import Flask, request, json as flask_json
 from flask_cors import CORS
-from run import *
+from run import run_analysis
 
 script_directory = os.getcwd()
 data_dir = os.path.join(script_directory, 'data')

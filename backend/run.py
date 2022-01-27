@@ -1,8 +1,6 @@
 import argparse
 import json
-from loganalyzer import Game
-from loganalyzer import Parser
-from loganalyzer import Analyzer
+from loganalyzer import Game, Parser, Analyzer
 
 
 def parse_args():
